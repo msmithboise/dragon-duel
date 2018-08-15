@@ -4,7 +4,8 @@ class App {
     constructor(){
         console.log("hello from main!")
         this.controllers = {
-            dragonDuelController: new DuelController 
+            dragonDuelController: new DuelController()
+            
         }
     }
 }

@@ -1,4 +1,4 @@
-export default class Hero{
+export default class Champion{
     constructor(data){
         this.id = data.id
         this.name = data.name
