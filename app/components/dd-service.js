@@ -6,6 +6,10 @@ const duelApi = axios.create({
     timeout: 3000
 })
 
+let currentDragonId = ''
+let currentChampionId = ''
+let currentGame = {}
+
 export default class DuelService {
     
     
@@ -32,7 +36,18 @@ export default class DuelService {
         })
     }
 
+    setDragon(id){
+        currentDragonId = id
+    }
 
+    startGame(){
+        if(currentDragonId && currentChampionId){
+            duelApi.post('games')
+                .then(res => {
+                    currentGame = res.data
+                })
+        }
+    }
 
     
 }

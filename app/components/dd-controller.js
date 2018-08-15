@@ -6,6 +6,7 @@ const app = document.getElementById("app")
 
 function drawDragons(dragons){
     // console.log(dragons)
+    //every dragon needs a button to select it as the dragon of choice
 let template = ''
 for (let i = 0; i < dragons.length; i++) {
     const dragon = dragons[i];
@@ -13,8 +14,7 @@ for (let i = 0; i < dragons.length; i++) {
     <div>
     <h4>${dragon.name}</h4>
     <img src="${dragon.imgUrl}" alt="dragon goes here">
-
-
+    <button onclick="selectDragon('${dragon.id}')">Select<button>
     </div>
     `
 }
@@ -35,7 +35,7 @@ for (let i = 0; i < champions.length; i++) {
     
     <div>
     <h4>${champion.name}</h4>
-    <img src="${champion.imgUrl}" alt="dragon goes here">
+    <img src="${champion.imgUrl}" alt="champion goes here">
     </div>
 `
 }
@@ -58,6 +58,10 @@ export default class DuelController {
     constructor(){
         console.log("hello from duelController!")
         duelService.getDragons(drawDragons) // putting things in the constructor makes them run when page loads
+        duelService.getChampions(drawChampions)
+    }
+    selectDragon(id){
+        duelService.setDragon(id)
     }
 
 }
